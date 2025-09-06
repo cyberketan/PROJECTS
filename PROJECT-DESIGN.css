@@ -1,0 +1,134 @@
+.header1{
+    height: 30px;
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+}
+
+
+.header{
+    height: 80px;
+    background-color:  #f1f1f1;
+}
+.logo{
+    width: 8%;
+    float: left;
+
+    }
+    .Cname{
+        display: inline;
+        justify-content: center;
+        height: 100%;
+        width: 22%;
+        float: left;
+        line-height: 20px;
+        font-size: 25px;
+    }
+    .menu{
+        height: 100%;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+    }
+    .searchbt{
+        height: 40%;
+        width: 20%;
+    float: inline-end;  
+    }
+    li{
+        display: inline-block;
+        padding: 10px;
+    }
+
+    .main{
+        height: 250px;
+        width: 1245px;
+        display: flex;
+        background-color: tomato;
+        border: 2px solid black;
+       
+    }
+    
+   
+   
+    .box1{
+         height: 240px;
+        width: 300px;
+       
+         border-radius:  15px;
+       box-shadow: 5px 5px 15px ;
+       color: #f1f1f1;
+        background-color: chocolate;
+    
+    }
+    .box2{
+        height: 240px;
+        width: 1000px;
+        float: left;
+        padding: 20px;
+    }
+    h3{
+        font-size: 20px;
+        gap: 20px;
+        text-indent: 10%;
+    }
+    .p1{
+    font-size: px;
+    color: antiquewhite;
+  justify-content: center;
+  text-indent: 5px;
+    }
+
+    .box3{
+        height: 500px;
+        width: 1245px;
+       
+        display: flex;
+        background-color: aqua;
+    }
+    .box4{
+        height:500px;
+        width: 800px;
+       
+    }
+    .box5{
+        height: 500px;
+        width: 460px;
+        
+    }
+    h2{
+        text-indent: 20px;
+    }
+    .p2{
+      
+        text-align: justify;
+    }
+    .project{
+        height: 200px;
+        width: 200px;
+       
+          margin: 0 auto;
+         
+        
+    }
+    .banner{
+        height: 100px;
+        width: 300px;
+       
+        margin: 0 auto;
+          gap: 20px;
+
+    }
+    footer{
+        height: 100px;
+        background-color: burlywood;
+    }
+    
+
+   
+   
+    
+
+        
+        
+        
