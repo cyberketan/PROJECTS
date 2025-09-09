@@ -1,0 +1,353 @@
+.main{
+    
+    background-color: gray;
+    background: url(wallpepar2.png);
+    
+}
+@media (max-width: 768px) {
+  .main {
+    background-color: lightgreen;
+    font-size: 16px;
+  }
+}
+
+.header{
+    height: 40px;
+    background-color:black; 
+   
+}
+
+ .icon {
+  display: flex;
+  float: right;
+  gap: 15px;  
+  margin: 10px;
+  justify-content: center;      
+}
+
+.icon i {
+  color: aliceblue;   
+  font-size: 25px; 
+}
+.header2{
+    height: 50px;
+    background-color: wheat;
+    opacity: 0.7;
+    text-align: center; 
+    
+
+}
+h2{
+    font-size: x-large;
+     float: inline-start;
+     
+     
+}
+
+li{
+    display: inline-block;
+        padding: 10px;
+        float: right; 
+    }
+   
+    
+    section {
+   max-width: 400px;
+   color: white;
+   padding: 150px;
+   justify-content: flex-end; 
+   align-items: center;  
+   
+}
+p{
+     font-size: 16px;
+  line-height: 1.6;
+  
+}
+h3{
+    font-size: 20px;
+}
+
+    .services {
+      display: flex;            
+      justify-content: center;    
+      gap: 10px;                  
+      padding: 50px 10px;
+    }
+
+    
+    .card{
+      background: #c62828;       
+      color:wheat;
+      border-radius: 10px;
+      padding: 10px;
+      width: 200px;               
+      text-align: center;         
+      
+    }
+
+    .icon {
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+
+    .card h3 {
+      margin: 5px 0;
+    }
+
+    .card p {
+      font-size: 10px;
+      line-height: 1.0;
+    }  
+
+/*page 2 with course section */
+
+  .meetings-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 50px 20px;
+      background-color: #555;
+    }
+      @media (max-width: 900px) {
+      .meetings-container {
+        grid-template-columns: 1fr;
+      }
+      
+    }
+
+    .meetings-section h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .meetings-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+    }
+
+    /* Left side box */
+    .meeting-categories {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      
+    }
+
+    .meeting-categories h3 {
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .meeting-categories button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #b71c1c;
+      color: #fff;
+      border-radius: 25px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .meeting-categories button:hover {
+      background: #e53935;
+    }
+
+    /* meeting cards mate */
+    .meetings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+       gap: 20px;
+    }
+
+    .meeting-card {
+      position: relative;
+      background: #fff;
+      color: #333;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .meeting-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .meeting-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .price-tag {
+     
+     
+      left: 10px;
+      background: #b71c1c;
+      color: #fff;
+      font-size: 14px;
+      padding: 5px;
+      border-radius: 20px;
+    }
+
+    .meeting-content {
+      padding: 10px;
+    }
+
+    
+
+    .meeting-content h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .meeting-content p {
+      font-size: 14px;
+      color: #555;
+    }
+
+   
+  
+
+    /*3rd page*/
+    
+     
+     .courses-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .courses-section h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .courses-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .course-box {
+      background:floralwhite;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .course-box:hover {
+      transform: translateY(8px);
+    }
+
+    .course-box img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 15px;
+      text-align: center;
+      color: #333;
+    }
+
+    .course-content h5 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .courses-section h2 {
+        font-size: 24px;
+      }
+    }
+
+
+    /* 4 page */
+    .box5{
+  
+   height: 400px;
+   width: auto;
+   background-color: beige;
+}
+
+.form-box {
+ 
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 10px rgba(0,0,0,0.2);
+    }
+
+    .form-box h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .form-box input,
+    .form-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px ;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-box button {
+      background: red;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Right Box - Contact Info */
+    .info-box {
+      flex: 1;
+      background: #b11e1e;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    
+
+   
+    @media (max-width: 768px) {
+      .box5 {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .info-box {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
