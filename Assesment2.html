@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant Report App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select, textarea, button {
+      padding: 8px;
+      width: 100%;
+    }
+    textarea { resize: vertical; }
+    button {
+      background: green;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      grid-column: 1 / -1;
+    }
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      display: none;
+    }
+   
+    .search {
+      margin: 20px 0;
+    }
+   
+  
+    @media (max-width: 600px) {
+      form { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Plant Report Form</h1>
+<div class="container">
+
+  <div id="msg" class="message"></div>
+
+  <form id="plantForm">
+    <div>
+      <label>Plant Name</label>
+      <input type="text" name="plantName" />
+    </div>
+
+    <div>
+      <label>Location</label>
+      <select name="location">
+        <option value="">Select</option>
+        <option>Balcony</option>
+        <option>Bedroom</option>
+        <option>Kitchen</option>
+        <option>Living Room</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Watering Frequency (Days)</label>
+      <input type="number" name="frequency" />
+    </div>
+
+    <div>
+      <label>Last Watered Date</label>
+      <input type="date" name="lastWatered" />
+    </div>
+
+    <div style="grid-column:1/-1">
+      <label>Plant Condition Notes</label>
+      <textarea name="notes"></textarea>
+    </div>
+
+    <button type="submit">Save Report</button>
+  </form>
+
+  <div class="search">
+    <input type="text" id="search" placeholder="Search by plant or location" />
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Plant</th>
+        <th>Location</th>
+        <th>Frequency</th>
+        <th>Last Watered</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody id="reportBody"></tbody>
+  </table>
+
+  <p id="noData" style="display:none">No data found</p>
+</div>
+
+<script>
+class PlantReportHandler {
+  constructor() {
+    this.form = document.getElementById('plantForm');
+    this.msg = document.getElementById('msg');
+    this.tableBody = document.getElementById('reportBody');
+    this.search = document.getElementById('search');
+    this.loadData();
+    this.bindEvents();
+  }
+
+  bindEvents() {
+    document.addEventListener('submit', (e) => {
+      if (e.target.id === 'plantForm') {
+        e.preventDefault();
+        this.handleSubmit();
+      }
+    });
+
+    document.addEventListener('input', (e) => {
+      if (e.target.closest('#plantForm')) this.validateForm();
+    });
+
+    this.search.addEventListener('input', () => this.render());
+  }
+
+  validateForm() {
+    const f = this.form;
+    if (f.plantName.value.length < 3) return false;
+    if (f.frequency.value <= 0) return false;
+    if (!f.lastWatered.value || new Date(f.lastWatered.value) > new Date()) return false;
+    if (f.notes.value.length < 15) return false;
+    return true;
+  }
+
+  handleSubmit() {
+    if (!this.validateForm()) {
+      this.showMessage('Invalid form data', 'error');
+      return;
+    }
+
+    const data = {
+      plantName: this.form.plantName.value,
+      location: this.form.location.value,
+      frequency: this.form.frequency.value,
+      lastWatered: this.form.lastWatered.value,
+      notes: this.form.notes.value
+    };
+
+    this.saveToLocalStorage(data);
+    this.clearForm();
+    this.showMessage('Plant report saved successfully', 'success');
+    this.render();
+  }
+
+  saveToLocalStorage(data) {
+    const arr = JSON.parse(localStorage.getItem('plants')) || [];
+    arr.push(data);
+    localStorage.setItem('plants', JSON.stringify(arr));
+  }
+
+  clearForm() {
+    this.form.reset();
+  }
+
+  showMessage(text, type) {
+    this.msg.textContent = text;
+    this.msg.className = `message ${type}`;
+    this.msg.style.display = 'block';
+    setTimeout(() => this.msg.style.display = 'none', 3000);
+  }
+
+  loadData() {
+    this.render();
+  }
+
+  render() {
+    const data = JSON.parse(localStorage.getItem('plants')) || [];
+    const keyword = this.search.value.toLowerCase();
+    this.tableBody.innerHTML = '';
+
+    const filtered = data.filter(d =>
+      d.plantName.toLowerCase().includes(keyword) ||
+      d.location.toLowerCase().includes(keyword)
+    );
+
+    document.getElementById('noData').style.display = filtered.length ? 'none' : 'block';
+
+    filtered.forEach(d => {
+      this.tableBody.innerHTML += `
+        <tr>
+          <td>${d.plantName}</td>
+          <td>${d.location}</td>
+          <td>${d.frequency}</td>
+          <td>${d.lastWatered}</td>
+          <td>${d.notes}</td>
+        </tr>`;
+    });
+  }
+}
+
+new PlantReportHandler();
+</script>
+</body>
+</html>
+
